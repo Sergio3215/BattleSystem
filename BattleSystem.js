@@ -66,7 +66,7 @@ var Attack = () =>{
 
 var win = () =>
 {
-    if(player.vida >=0)
+    if(player.vida <=0)
     {
         alert("Enemy Win");
     }
