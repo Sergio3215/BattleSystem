@@ -3,6 +3,7 @@ var player = {name:"Player",attack:54,live:100};
 var enemy = {name:"Enemy",attack:45,live:100};
 //turn 0=pj; turn 1= enemy;
 var vel=0;
+var vel1=0;
 var turn=0;
 var turno  =() => {
     document.getElementById("attack").disabled = true;
@@ -27,13 +28,25 @@ var turno  =() => {
         }
         else{
             vel+=1;
+            vel1++;
+            if(vel1 ==5)
+            document.getElementById("msg").innerHTML= "wait";
+            if(vel1 ==10)
+            document.getElementById("msg").innerHTML= "wait.";
+            if(vel1 ==15)
+            document.getElementById("msg").innerHTML= "wait..";
+            if(vel1 ==20)
+            {
+            document.getElementById("msg").innerHTML= "wait...";
+            vel1=0;
+            }
         }
     }
 };
 
 var Enemy= () =>{
         player.live = player.live - enemy.attack;
-        if(player.live < 0)
+        if(player.live <= 0)
         {
         document.getElementById("box1").style.width = 0+"px";
         document.getElementById("box1").innerHTML = 0+" /100";
@@ -49,7 +62,7 @@ var Enemy= () =>{
 
 var Attack = () =>{
         enemy.live=enemy.live- player.attack;
-        if(enemy.live<0)
+        if(enemy.live<=0)
         {
         document.getElementById("box").style.width = 0+"px";
         document.getElementById("box").innerHTML = 0+" /100";
